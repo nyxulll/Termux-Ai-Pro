@@ -42,9 +42,6 @@ Includes a settings menu to manage API keys, models, and providers — no file e
 
 ## 🚀 Installation
 
-> ⚠️ **IMPORTANT:**
-> Replace **`YOUR_USERNAME`** and **`Termux-AI-Pro`** with your actual GitHub username and repository name.
-
 ---
 
 ### **Option 1 — Standard Clone & Install (Recommended)**
@@ -77,7 +74,7 @@ chmod +x install.sh
 Run directly from Termux:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/YOUR_USERNAME/Termux-AI-Pro/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/nyxulll/Termux-AI-Pro/main/install.sh | bash
 ```
 
 ---
@@ -178,5 +175,5 @@ Or restart Termux.
 
 ## 📝 License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the **MIT License** . MADE WITH ❤️ FOR THE termux COMMUNITY.
 
