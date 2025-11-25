@@ -56,7 +56,7 @@ pkg install git python -y
 Clone your repository:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Termux-AI-Pro.git
+git clone https://github.com/nyxulll/Termux-AI-Pro.git
 cd Termux-AI-Pro
 ```
 
