@@ -2,33 +2,40 @@ import os
 import json
 from pathlib import Path
 
-HOME = Path.home()
-CONFIG_DIR = HOME / ".config" / "termux-ai-pro"
+# Config directory: ~/.config/termux-ai-pro/
+CONFIG_DIR = Path.home() / ".config" / "termux-ai-pro"
 CONFIG_FILE = CONFIG_DIR / "config.json"
 
 class Config:
     def __init__(self):
-        self._data = {}
-        self._loaded = False
+        self.data = {}
+        self._load()
 
-    def ensure_dir(self):
+    def _load(self):
+        """Loads config.json if it exists."""
         CONFIG_DIR.mkdir(parents=True, exist_ok=True)
+
         if CONFIG_FILE.exists():
             try:
                 with CONFIG_FILE.open("r", encoding="utf-8") as f:
-                    self._data = json.load(f)
-                    self._loaded = True
+                    self.data = json.load(f)
             except Exception:
-                self._data = {}
+                # If the config is corrupted, reset it
+                self.data = {}
+        else:
+            self.data = {}
 
     def save(self):
+        """Saves config.json."""
         CONFIG_DIR.mkdir(parents=True, exist_ok=True)
         with CONFIG_FILE.open("w", encoding="utf-8") as f:
-            json.dump(self._data, f, indent=2)
+            json.dump(self.data, f, indent=2)
 
     def get(self, key, default=None):
-        return self._data.get(key, default)
+        """Gets a config value."""
+        return self.data.get(key, default)
 
     def set(self, key, value):
-        self._data[key] = value
+        """Sets a config value and saves."""
+        self.data[key] = value
         self.save()
