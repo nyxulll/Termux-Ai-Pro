@@ -1,110 +1,144 @@
-# 🤖 Termux AI Pro
-The Ultimate CLI AI Client for Termux.
+# Termux-AI-Pro
 
-> Chat with GPT‑4, Gemini, DeepSeek, Claude, and even local models — all inside Termux with a beautiful terminal UI.
+A clean, modern, beginner-friendly AI client for **Termux** with a beautiful terminal UI, Markdown responses, and simple API setup.
+
+![Termux AI Banner](https://raw.githubusercontent.com/nyxulll/Termux-AI-Pro/main/banner.png)
 
 ---
 
-## ✨ Features
+## 🌟 Features
 
-### 🎨 Beautiful UI
-- Built with the **Rich** Python library
-- Clean chat bubbles, markdown rendering, syntax highlighting, and smooth scrolling
+* **Friendly first-run setup**
 
-### 🔌 Universal AI Support
-Use **any** provider:
-- OpenAI (GPT‑3.5, GPT‑4, GPT‑4o, etc.)
-- Google Gemini
-- DeepSeek
-- Anthropic Claude
-- Local models (via LMStudio / Ollama API)
-- Custom API endpoints
-
-### ⚡ Fast Streaming Replies
-- Real‑time streaming
-- Auto‑wrap
-
-### 📁 Chat Management
-- Save / load chats
-- Export conversations to Markdown
-- Custom system prompts
-
-### 🛠 Built for Termux
-- 100% Python
-- Zero-bloat
-- Works on Android
+  * "Welcome to Termux-AI-Pro! Please enter your API key" prompt
+  * Auto‑saves your key (no need to re-enter)
+* **GPT-style chat experience** inside Termux
+* **Beautiful UI** using Rich (Markdown, panels, colors)
+* **Simple folder structure** — easy to modify & build on
+* **Stable installer script**
+* **Works on any Android device using Termux**
 
 ---
 
 ## 📦 Installation
 
-### 1. Install Termux packages
-```
-pkg update && pkg upgrade
-pkg install python git
-pip install rich requests prompt_toolkit
-```
+Open Termux and run:
 
-### 2. Clone this repo
-```
-git clone https://github.com/nyxulll/Termux-Ai-Pro.git
+```bash
+pkg update -y
+pkg install git python -y
+
+git clone https://github.com/nyxulll/Termux-Ai-Pro
 cd Termux-Ai-Pro
+
+chmod +x install.sh
+./install.sh
 ```
 
-### 3. Add your API key(s)
-Edit your config file:
-```
-nano config.json
-```
-Example:
-```json
-{
-  "provider": "openai",
-  "api_key": "YOUR_KEY",
-  "model": "gpt-4o-mini"
-}
-```
+After installation, start the app:
 
-### 4. Run it
-```
-python main.py
+```bash
+termux-ai
 ```
 
 ---
 
-## 📙 Usage
-- Type your message and press **Enter**
-- Use `/provider` to switch providers
-- Use `/model` to switch models
-- Use `/save` and `/load` to manage chats
-- Use `/clear` to clear screen
+## 🔑 First Run (API Key Setup)
 
----
+On your very first run, Termux-AI-Pro will show:
 
-## 🧩 Supported Commands
 ```
-/help       Show help menu
-/provider   Change AI provider
-/model      Change model
-/save       Save chat history
-/load       Load chat history
-/clear      Clear terminal
-/exit       Quit
+Welcome to Termux-AI-Pro!
+Please enter your OpenAI API key (you can paste it here)
+:
 ```
 
----
+Paste your API key and press Enter.
+It will be saved automatically in:
 
-## 📚 Screenshots
-*(Add your screenshots here)*
+```
+~/.config/termux-ai-pro/config.json
+```
 
----
-
-## 🛠 Development
-Pull requests are welcome.
-If you want new features, open an issue.
+You will **never** be asked again unless you delete the file.
 
 ---
 
-## ⭐ Support
-If you like this project, consider starring ⭐ the repo!
+## 🧠 Usage
+
+After running:
+
+```bash
+termux-ai
+```
+
+Just start typing questions:
+
+```
+You: explain what a linux kernel is
+```
+
+AI responds with Markdown‑formatted, clean output.
+
+Press **Ctrl + C** to exit.
+
+---
+
+## 📁 Project Structure
+
+```
+Termux-Ai-Pro/
+ ├── main.py                 # Main chat UI
+ ├── config.py               # Clean config system
+ ├── install.sh              # Installer
+ ├── termux-ai               # Launcher
+ ├── requirements.txt        # Python dependencies
+ ├── providers/
+ │     └── openai_provider.py  # Handles OpenAI API
+ └── README.md
+```
+
+---
+
+## 🧩 Adding More Providers (Gemini, Claude, etc.)
+
+The project is designed to be modular.
+To add a provider:
+
+1. Create a new file in `providers/`
+2. Add your provider class
+3. Import it in `main.py`
+
+I can help you add:
+
+* Google Gemini
+* Anthropic Claude
+* DeepSeek
+* Local models
+
+Just ask.
+
+---
+
+## 🛠 Requirements
+
+* Termux (latest)
+* Python 3
+* Internet connection
+* OpenAI API key (for now)
+
+---
+
+## 📜 License
+
+MIT License — free to modify, use, and improve.
+
+---
+
+## ❤️ Credits
+
+Created by **nyxulll**.
+
+
+Made with ❤️ for the Termux community.
 
