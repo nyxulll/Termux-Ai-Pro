@@ -1,30 +1,21 @@
 #!/bin/bash
-set -euo pipefail
+set -e
 
-echo "Termux-AI-Pro installer — started"
+echo "Installing Termux-AI-Pro..."
 
-if ! command -v pkg >/dev/null 2>&1; then
-  echo "This installer is meant to run inside Termux. Exiting."
-  exit 1
-fi
+pkg update -y
+pkg install -y python git
 
-pkg update -y || true
-pkg upgrade -y || true
-pkg install -y git python openssl
+pip install --upgrade pip
+pip install -r requirements.txt
 
-python -m pip install --upgrade pip setuptools
-python -m pip install -r requirements.txt
+# Install launcher
+cp termux-ai $PREFIX/bin/termux-ai
+chmod +x $PREFIX/bin/termux-ai
 
-PREFIX="$PREFIX"
-SHARE_DIR="$PREFIX/share/termux-ai-pro"
-BIN_DIR="$PREFIX/bin"
+# Copy project files
+mkdir -p $PREFIX/share/termux-ai-pro
+cp -r * $PREFIX/share/termux-ai-pro
 
-rm -rf "$SHARE_DIR"
-mkdir -p "$SHARE_DIR"
-cp -r * "$SHARE_DIR/"
-
-cp termux-ai "$BIN_DIR/termux-ai"
-chmod +x "$BIN_DIR/termux-ai"
-chmod +x "$SHARE_DIR/main.py"
-
-echo "Installation complete. Run: termux-ai"
+echo "Installation complete!"
+echo "Start the app by typing: termux-ai"
