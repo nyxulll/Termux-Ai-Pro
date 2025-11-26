@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/env bash
+SHARE_DIR="$PREFIX/share/termux-ai-pro"
+python "$SHARE_DIR/main.py" "$@"
