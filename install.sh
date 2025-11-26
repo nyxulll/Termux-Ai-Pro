@@ -1,21 +1,20 @@
-#!/bin/bash
-set -e
+#!/data/data/com.termux/files/usr/bin/bash
 
-echo "Installing Termux-AI-Pro..."
+echo "📦 Installing Termux-AI-Pro dependencies..."
 
+# Update packages
 pkg update -y
-pkg install -y python git
+pkg upgrade -y
 
-pip install --upgrade pip
-pip install -r requirements.txt
+# Install Python & essential packages
+pkg install -y python python-pip git
 
-# Install launcher
-cp termux-ai $PREFIX/bin/termux-ai
-chmod +x $PREFIX/bin/termux-ai
+# Upgrade pip essentials
+pip install --upgrade pip setuptools wheel
 
-# Copy project files
-mkdir -p $PREFIX/share/termux-ai-pro
-cp -r * $PREFIX/share/termux-ai-pro
+# Install required Python modules WITHOUT Rust builds (avoids jiter error)
+echo "📥 Installing Python requirements..."
+pip install --no-build-isolation --no-cache-dir -r requirements.txt
 
-echo "Installation complete!"
-echo "Start the app by typing: termux-ai"
+echo "✅ Installation complete!"
+echo "Run the app with: python main.py"
